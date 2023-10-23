@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Green Learning</title>
+    <link href="{{ url_for('static', path='/style.css') }}" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <h1>環境學習網</h1>
+        <nav>
+            <ul>
+                <li><a class="nav-item" href="/about">關於我們</a></li>
+                <li><a class="nav-item" href="/articles">環境讀物</a></li>
+                <li><a class="nav-item" href="/topics">主題課程</a></li>
+                <li><a class="nav-item" href="/websites">相關網站</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- cover and slogan -->
+        <section class="cover">
+            <!-- Don't use this, use it for the company: "Make Earth a better place" -->
+            <h2>
+                More Green,<br>
+                More Better.
+            </h2> <!-- more/go/buy/build/for/eat/use/...... -->
+        </section>
+
+        <!--  -->
+
+        <!-- article list -->
+        <section class="articles">
+            <h3>環境讀物</h3>
+            <table>
+                <tr>
+                    <th>標題</th>
+                    <th>更新日期</th>
+                </tr>
+                {% for article in articles %}
+                    <tr>
+                        <td>{{ article.title }}</td>
+                        <td>{{ article.datetime }}</td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </section>
+
+        <!-- topic list -->
+        <section class="topics">
+            <h3>主題課程</h3>
+            <table>
+                <tr>
+                    <th></th>
+                    <th>主題</th>
+                </tr>
+                {% for topic in topics %}
+                    <tr>
+                        <td>{{ loop.index }}</td>
+                        <td>{{ topic.title }}</td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </section>
+
+        <!--  -->
+    </main>
+
+    <footer>
+        <p>&copy; Cheng's Studio 2023</p>
+    </footer>
+
+</body>
+</html>
