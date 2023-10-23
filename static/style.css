@@ -1,0 +1,104 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+
+/* header */
+
+header {
+    position: fixed;
+    /*background-color: darkseagreen;*/
+    height: 80px;
+    width: 94%;
+    top: 2vw;
+    left: 3%;
+    border-radius: 20px;
+    background: rgba(188, 188, 188, 0.2);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+header h1 {
+    position: absolute;
+    left: 5vw;
+    top: 0;
+    line-height: 80px;
+}
+
+header ul {
+    position: absolute;
+    right: 5vw;
+    top: 0;
+    line-height: 80px;
+}
+
+header li {
+    display: inline;
+    margin-left: 4vw;
+}
+
+header a {
+    text-decoration: none;
+    color: dimgray;
+}
+
+header a:hover {
+    text-decoration: underline;
+    color: black;
+}
+
+
+/* main */
+
+/* cover section */
+.cover {
+    height: 95vh;
+    /* background-color: darkolivegreen; */
+    background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQAxE12pds6YPt1LAnLmFd0n01JmdRCLr0Etw&usqp=CAU');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.cover h2 {
+    display: inline-block;
+    position: relative;
+    vertical-align: middle;
+    top: 20vw;
+    left: 5vw;
+    font-size: 100px;
+    color: white;
+}
+
+/* article list section */
+.articles {
+
+}
+
+/* topic list section */
+.topics {
+
+}
+
+/* footer */
+
+footer {
+    background-color: forestgreen;
+    height: 40px;
+    width: 100%;
+}
+
+footer p {
+    position: relative;
+    text-align: right;
+    right: 5vw;
+    bottom: 0;
+    line-height: 40px;
+    color: whitesmoke;
+}
+
+/* mobile view */
+
+@media screen and (max-width: 768px) {
+    
+}

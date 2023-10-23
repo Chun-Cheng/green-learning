@@ -4,12 +4,15 @@ from fastapi.responses import HTMLResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 from model import model
+from routers import get_root
 
 app = FastAPI()
 app.mount('/static', StaticFiles(directory='static'), name='static')
 templates = Jinja2Templates(directory='templates')
 
+app.include_router(get_root.router)  # homepage
 
+'''
 # homepage
 @app.get('/', response_class=HTMLResponse)
 async def root(request: Request):
@@ -18,6 +21,7 @@ async def root(request: Request):
     return templates.TemplateResponse('root.html', {'request': request, 
                                                     'articles': articles, 
                                                     'topics': topics})
+'''
 
 # list of articles
 @app.get('/articles', response_class=HTMLResponse)
