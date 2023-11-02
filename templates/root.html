@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Green Learning</title>
+    <link rel="shortcut icon" href="/static/favicon.ico" type="image/x-icon">
     <link href="/static/style.css" rel="stylesheet">
 </head>
 <body>
@@ -34,6 +35,17 @@
         <!-- article list -->
         <section class="articles">
             <h3>環境讀物</h3>
+            <ul>
+                {% for article in articles %}
+                <li>
+                    <a href="">
+                        <time></time>
+                        <span></span>
+                        <span></span>
+                    </a>
+                </li>
+                {% endfor %}
+            </ul>
             <table>
                 <tr>
                     <th>標題</th>
