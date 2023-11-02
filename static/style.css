@@ -3,6 +3,11 @@
     margin: 0;
 }
 
+/* global */
+
+a {
+    text-decoration: none;
+}
 
 /* header */
 
@@ -13,6 +18,7 @@ header {
     width: 94%;
     top: 2vw;
     left: 3%;
+    z-index: 100;
     border-radius: 20px;
     background: rgba(188, 188, 188, 0.2);
     backdrop-filter: blur(10px);
@@ -20,7 +26,7 @@ header {
 }
 
 header h1 {
-    position: absolute;
+    position: relative;
     left: 5vw;
     top: 0;
     line-height: 80px;
@@ -82,14 +88,20 @@ header a:hover {
     margin-bottom: 10px;
 }
 
-.article table {
+.article ul {
+    max-height: 300px;
     width: 100%;
+    overflow-y: auto;
     border-style: solid;
     border-color: black;
     border-width: 1px;
 }
 
-.articles tr:nth-child(odd) {
+.article li {
+    list-style: none;
+}
+
+.articles li:nth-child(odd) {
     background-color: aquamarine;
 }
 

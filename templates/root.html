@@ -39,14 +39,14 @@
                 {% for article in articles %}
                 <li>
                     <a href="">
-                        <time></time>
-                        <span></span>
+                        <time>{{ article.datetime }}</time>
+                        <span>{{ article.title }}</span>
                         <span></span>
                     </a>
                 </li>
                 {% endfor %}
             </ul>
-            <table>
+            <!-- <table>
                 <tr>
                     <th>標題</th>
                     <th>更新日期</th>
@@ -57,7 +57,7 @@
                         <td>{{ article.datetime }}</td>
                     </tr>
                 {% endfor %}
-            </table>
+            </table> -->
         </section>
 
         <!-- topic list -->
