@@ -4,13 +4,18 @@ from fastapi.responses import HTMLResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 from model import model
-from routers import get_root
+from routers import get_root, get_book, get_book_page, get_page, get_404
 
 app = FastAPI()
 app.mount('/static', StaticFiles(directory='static'), name='static')
 templates = Jinja2Templates(directory='templates')
 
 app.include_router(get_root.router)  # homepage
+app.include_router(get_book.router)  # book
+app.include_router(get_book_page.router)  # book page
+app.include_router(get_page.router)  # single article page
+
+app.include_router(get_404.router)  # 404 Not Found
 
 '''
 # homepage
