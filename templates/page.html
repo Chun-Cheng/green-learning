@@ -8,9 +8,11 @@
 <body>
     <h1>{{ page_title }}</h1>
     {{ page_author }} / <!-- datetime -->{{ page_last_update }}<br>
-    {% for tag in page_tags %}
-        #{{ tag }} 
-    {% endfor %}<br>
     {{ page_content|safe }}
+    <hr>
+    Tags<br>
+    {% for tag in page_tags %}
+        {{ tag }} 
+    {% endfor %}
 </body>
 </html>

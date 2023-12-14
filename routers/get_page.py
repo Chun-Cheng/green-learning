@@ -20,13 +20,12 @@ async def root(request: Request, page_id: str):
     if page is None:
         return RedirectResponse('/404')
 
-    # 整理與轉換data
+    # organize and convert data
     page_title = page[0]
     page_author = page[1]
     page_last_update = page[2]
     page_tags = page[3].split(',')
-    page_content = markdown.markdown(page[4])
-    # markdown to html (using markdown library)
+    page_content = markdown.markdown(page[4])  # markdown to html
 
     # return
     return templates.TemplateResponse('page.html', {'request': request, 
