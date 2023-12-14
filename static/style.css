@@ -1,4 +1,4 @@
-* {
+div {
     padding: 0;
     margin: 0;
 }
@@ -59,13 +59,17 @@ header a:hover {
 
 /* cover section */
 .cover {
-    height: 95vh;
+    height: 100vh;
     /* background-color: darkolivegreen; */
-    background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQAxE12pds6YPt1LAnLmFd0n01JmdRCLr0Etw&usqp=CAU');
+    background-image: url('/static/image/cover.webp');
     background-repeat: no-repeat;
     background-size: cover;
 }
-
+/*
+.cover img {
+    object-fit: cover;
+}
+*/
 .cover h2 {
     display: inline-block;
     position: relative;
@@ -77,7 +81,7 @@ header a:hover {
 }
 
 /* article list section */
-.articles {
+/* .articles {
     width: 100%;
     padding: 20px;
     background-color: azure;
@@ -103,14 +107,14 @@ header a:hover {
 
 .articles li:nth-child(odd) {
     background-color: aquamarine;
-}
+} */
 
 /* topic list section */
-.topics {
+/* .topics {
     width: 100%;
     padding: 20px;
     background-color: honeydew;
-}
+} */
 
 /* footer */
 

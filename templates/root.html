@@ -5,7 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Green Learning</title>
     <link rel="shortcut icon" href="/static/favicon.ico" type="image/x-icon">
-    <link href="/static/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 <body>
     <header>
@@ -24,6 +26,7 @@
         <!-- cover and slogan -->
         <section class="cover">
             <!-- Don't use this, use it for the company: "Make Earth a better place" -->
+            <!-- <img src="static/image/cover.webp" alt="cover"> -->
             <h2>
                 More Green,<br>
                 More Better.
@@ -33,9 +36,9 @@
         <!--  -->
 
         <!-- article list -->
-        <section class="articles">
-            <h3>環境讀物</h3>
-            <ul>
+        <section class="articles container">
+            <h3 class="h3">環境讀物</h3>
+            <ul class="table table-strip table-hover">
                 {% for article in articles %}
                 <li>
                     <a href="">
@@ -46,18 +49,22 @@
                 </li>
                 {% endfor %}
             </ul>
-            <!-- <table>
-                <tr>
-                    <th>標題</th>
-                    <th>更新日期</th>
-                </tr>
-                {% for article in articles %}
+            <table class="table table-strip table-hover">
+                <thead>
                     <tr>
-                        <td>{{ article.title }}</td>
-                        <td>{{ article.datetime }}</td>
+                        <th>標題</th>
+                        <th>更新日期</th>
                     </tr>
-                {% endfor %}
-            </table> -->
+                </thead>
+                <tbody>
+                    {% for article in articles %}
+                        <tr>
+                            <td>{{ article.title }}</td>
+                            <td>{{ article.datetime }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
         </section>
 
         <!-- topic list -->
