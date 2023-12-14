@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ page_title }} - {{ book_title }}</title>
+</head>
+<body>
+    <h1>{{ page_title }}</h1>
+    {{ page_author }} / <!-- datetime -->{{ page_last_update }}<br>
+    {{ page_content|safe }}
+    <hr>
+    Tags<br>
+    {% for tag in page_tags %}
+        {{ tag }} 
+    {% endfor %}
+</body>
+</html>
