@@ -15,7 +15,7 @@ async def root(request: Request, page_id: str):
     page_id = re.search('[a-z0-9_-]+', page_id).string
 
     # get page data
-    page = model.execute('SELECT title, author, last_update, tags, content FROM pages WHERE url=?', (page_id,)).fetchone()
+    page = model.execute('SELECT title, author, update_datetime, tags, content FROM pages WHERE url=?', (page_id,)).fetchone()
     # page not found
     if page is None:
         return RedirectResponse('/404')
