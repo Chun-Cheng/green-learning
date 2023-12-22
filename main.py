@@ -4,7 +4,8 @@ from fastapi.responses import HTMLResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 from model import model
-from routers import get_root, get_book, get_book_page, get_page, get_404
+from routers import get_root, get_book, get_book_page, get_page, get_404, get_signup, get_signin
+from routers import post_api_signup, post_api_signin
 
 app = FastAPI()
 app.mount('/static', StaticFiles(directory='static'), name='static')
@@ -14,6 +15,11 @@ app.include_router(get_root.router)  # homepage
 app.include_router(get_book.router)  # book
 app.include_router(get_book_page.router)  # book page
 app.include_router(get_page.router)  # single article page
+app.include_router(get_signup.router)  # signup page
+app.include_router(get_signin.router)  # signin page
+
+app.include_router(post_api_signup.router)  # signup api
+app.include_router(post_api_signin.router)  # signin api
 
 app.include_router(get_404.router)  # 404 Not Found
 
