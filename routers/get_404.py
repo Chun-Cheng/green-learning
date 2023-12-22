@@ -7,5 +7,5 @@ templates = Jinja2Templates(directory='templates')
 
 # 404 Not Found
 @router.get('/404', response_class=HTMLResponse)
-async def root(request: Request):
+async def not_found(request: Request):
     return templates.TemplateResponse('404.html', {'request': request}, 404)

@@ -8,7 +8,7 @@ templates = Jinja2Templates(directory='templates')
 
 # homepage
 @router.get('/', response_class=HTMLResponse)
-async def root(request: Request):
+async def homepage(request: Request):
     articles = model.execute('SELECT title, author, datetime, content FROM articles').fetchall()
     articles = map(lambda r: {'title': r[0],
                    'author': r[1],

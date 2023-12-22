@@ -7,5 +7,5 @@ templates = Jinja2Templates(directory='templates')
 
 # sign in page
 @router.get('/signin', response_class=HTMLResponse)
-async def root(request: Request):
+async def sign_in_page(request: Request):
     return templates.TemplateResponse('signin.html', {'request': request})

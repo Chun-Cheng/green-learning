@@ -9,7 +9,7 @@ templates = Jinja2Templates(directory='templates')
 
 # book homepage
 @router.get('/book/{book_id}', response_class=HTMLResponse)
-async def root(request: Request, book_id: str):
+async def book_homepage(request: Request, book_id: str):
     # check input data => regex
     book_id = re.search('[a-z0-9_-]+', book_id).string
 
