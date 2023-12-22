@@ -3,7 +3,7 @@ from fastapi.encoders import jsonable_encoder
 from fastapi.responses import JSONResponse
 from fastapi.templating import Jinja2Templates
 from pydantic import BaseModel
-import model
+from model import model
 
 router = APIRouter(prefix='/api', tags=['APIs'])
 templates = Jinja2Templates(directory='templates')

@@ -57,7 +57,7 @@ def create_table():
     name: display name of the user. No limitation.
     email
     passkey
-    otp-key
+    otp_key
     sessions: session id. array, split in comma(,)
     interests: tags   , split in comma(,), 2D array with weights
     weights:   weights, split in comma(,), 2D array with interests
@@ -65,7 +65,7 @@ def create_table():
     question_history: question history id. array, split in comma(,)
     '''
     try:
-        execute('CREATE TABLE users(username PRIMARY KEY, name, email, passkey, otp-key, sessions, interests, weights, reading_history, question_history)')
+        execute('CREATE TABLE users(username PRIMARY KEY, name, email, passkey, otp_key, sessions, interests, weights, reading_history, question_history)')
     except sqlite3.OperationalError:
         print(f'table "users" has exist')
 
