@@ -17,6 +17,9 @@ app.include_router(get_page.router)  # single article page
 
 app.include_router(get_404.router)  # 404 Not Found
 
+
+model.create_table()
+
 '''
 # homepage
 @app.get('/', response_class=HTMLResponse)

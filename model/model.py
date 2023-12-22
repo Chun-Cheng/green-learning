@@ -148,13 +148,15 @@ def sample_data():
     # books
     try:
         # execute('CREATE TABLE books(url, title, author, last_update, tags, homepage, pages)')
-        books = [
-            # url       title     author      update_datetime  tags                description pages                     view_count
-            ('book-1', 'Book 1', 'anonymous', datetime.now(), 'First,Celebration', '', 'book-1-2021214-page-1-20231214', 0)
-        ]
-        executemany('INSERT INTO books VALUES(?, ?, ?, ?, ?, ?, ?, ?)', books)  # write something into the database
         res = execute('SELECT * FROM books').fetchall()
-        print(f'table books:\n{res}')
+        if len(res) == 0:
+            books = [
+                # url       title     author      update_datetime  tags                description pages                     view_count
+                ('book-1', 'Book 1', 'anonymous', datetime.now(), 'First,Celebration', '', 'book-1-2021214-page-1-20231214', 0)
+            ]
+            executemany('INSERT INTO books VALUES(?, ?, ?, ?, ?, ?, ?, ?)', books)  # write something into the database
+            res = execute('SELECT * FROM books').fetchall()
+            print(f'table books:\n{res}')
     except sqlite3.OperationalError:
         # res = execute('SELECT * FROM books').fetchall()
         # print(f'table "books" has exist, data:\n{res}')
@@ -163,13 +165,15 @@ def sample_data():
     # pages
     try:
         # execute('CREATE TABLE pages(url, title, author, last_update, tags, content)')
-        pages = [
-            # url                               title     author      update_datetime  tags                 content                         question book_id view_count
-            ('book-1-2021214-page-1-20231214', 'Page 1', 'anonymous', datetime.now(), 'First,Celebration', 'This is the 1 page of Book 1.', '', 'book-1', 0)
-        ]
-        executemany('INSERT INTO pages VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)', pages)  # write something into the database
         res = execute('SELECT * FROM pages').fetchall()
-        print(f'table pages:\n{res}')
+        if res == 0:
+            pages = [
+                # url                               title     author      update_datetime  tags                 content                         question book_id view_count
+                ('book-1-2021214-page-1-20231214', 'Page 1', 'anonymous', datetime.now(), 'First,Celebration', 'This is the 1 page of Book 1.', '', 'book-1', 0)
+            ]
+            executemany('INSERT INTO pages VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)', pages)  # write something into the database
+            res = execute('SELECT * FROM pages').fetchall()
+            print(f'table pages:\n{res}')
     except sqlite3.OperationalError:
         # res = execute('SELECT * FROM pages').fetchall()
         # print(f'table "pages" has exist, data:\n{res}')
@@ -180,7 +184,7 @@ def sample_data():
     # commit
     commit()
 
-sample_data()
+# sample_data()
 # create_table()
 
 
