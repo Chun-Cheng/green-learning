@@ -1,4 +1,4 @@
-from fastapi import APIRouter, Request
+from fastapi import APIRouter, Request, HTTPException, status
 from fastapi.encoders import jsonable_encoder
 from fastapi.responses import JSONResponse
 from fastapi.templating import Jinja2Templates
@@ -19,6 +19,9 @@ async def sign_in(request: Request, signin_request: SigninRequest):
     # check signup_request's format (regex)
 
     # check whether the account exist
+    # if not exist
+    #     raise HTTPException()
+
     response_content = {}
     response_content = jsonable_encoder(response_content)
     return JSONResponse(response_content)
