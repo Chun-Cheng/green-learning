@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sign in - Green Learning</title>
-    <link rel="shortcut icon" href="/static/favicon.ico" type="image/x-icon">
+    <title>登入 - Green Learning</title>
+    <link rel="shortcut icon" href="/static/image/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="/static/css/signin.css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
@@ -15,35 +15,35 @@
             <div class="col-md-6">
                 <div class="card">
                     <div class="card-header">
-                        <h4 class="mb-0">Sign in</h4>
+                        <h4 class="mb-0">登入</h4>
                     </div>
                     <div class="card-body">
                         <!-- passkey login alert message -->
                         <div class="alert alert-warning" id="passkey-alert" role="alert">
-                            A simple warning alert—check it out!
+                            通行密鑰登入警告訊息
                         </div>
                         <!-- passkey login button -->
-                        <button class="btn btn-primary col-12" id="btn-passkey-signin">Sign in with Passkey</button>
+                        <button class="btn btn-primary col-12" id="btn-passkey-signin">通行密鑰登入</button>
                         <hr>
                         <!-- email login alert message -->
                         <div class="alert alert-warning" id="email-alert" role="alert">
-                            A simple warning alert—check it out!
+                            電子信箱登入警告訊息
                         </div>
                         <!-- email login form -->
                         <form class="form-inline" id="signin-form" method="post" action="#">
                             <div class="form-group">
-                                <label for="email">Email</label>
-                                <input type="email" class="form-control" id="email" placeholder="e.g. user@example.com" autocomplete="email webauthn" required>
+                                <label for="email">電子信箱</label>
+                                <input type="email" class="form-control" id="email" placeholder="例：user@example.com" autocomplete="email webauthn" required>
                             </div>
-                            <button type="submit" class="btn btn-outline-secondary col-12" id="submit-btn">Sign in with email</button>
+                            <button type="submit" class="btn btn-outline-secondary col-12" id="submit-btn">電子信箱登入</button>
                         </form>
                         <!-- email login verify form -->
                         <form class="form-inline" id="verify-form" method="post" action="#">
                             <div class="form-group">
-                                <label for="verify-code">Verify Code</label>
+                                <label for="verify-code">驗證碼</label>
                                 <input type="text" class="form-control" id="verify-code" placeholder="Verify code sent to your email" autocomplete="off" required>
                             </div>
-                            <button type="submit" class="btn btn-primary col-12" id="verify-btn">Sign in</button>
+                            <button type="submit" class="btn btn-primary col-12" id="verify-btn">登入</button>
                         </form>
                     </div>
                 </div>

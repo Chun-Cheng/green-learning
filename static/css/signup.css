@@ -8,3 +8,7 @@ label {
     width: 100%;
     display: inline-block;
 }
+
+#alert {
+    display: none;
+}
