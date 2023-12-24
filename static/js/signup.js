@@ -5,6 +5,10 @@ document.getElementById('signup-form').onsubmit = (event) => {  // addEventListe
     let submit_button = document.getElementById('submit-btn');
     // change the text on submit button to the loading image
     submit_button.disabled = true;
+    submit_button.innerHTML = `
+        <span class="spinner-border spinner-border-sm" aria-hidden="true"></span>
+        <span class="visually-hidden" role="status">Loading...</span>
+        `;
 
     // get the values
     let name = document.getElementById('name').value;
@@ -37,3 +41,8 @@ document.getElementById('signup-form').onsubmit = (event) => {  // addEventListe
     
     return false;
 };
+
+// detect dark mode
+if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+    document.documentElement.setAttribute('data-bs-theme', 'dark');
+}
