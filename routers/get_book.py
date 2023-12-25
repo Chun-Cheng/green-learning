@@ -14,14 +14,15 @@ async def book_homepage(request: Request, book_id: str):
     book_id = re.search('[a-z0-9_-]+', book_id).string
 
     # get book data
-    book = model.execute('SELECT homepage FROM books WHERE url=?', (book_id,)).fetchone()
+    book = model.execute('SELECT pages FROM books WHERE id=?', (book_id,)).fetchone()
     # book not found
     if book is None:
         return RedirectResponse('/404')
 
     # organize and convert data
     # book
-    book_homepage = book[0]
+    book_pages = book[0].split(',')
+    book_homepage = book_pages[0]
 
     # redirect
     return RedirectResponse(f'/book/{book_id}/{book_homepage}')

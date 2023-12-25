@@ -16,20 +16,20 @@ async def book_page(request: Request, book_id: str, page_id: str):
     page_id = re.search('[a-z0-9_-]+', page_id).string
 
     # get book data
-    book = model.execute('SELECT url, title, pages FROM books WHERE url=?', (book_id,)).fetchone()
+    book = model.execute('SELECT id, title, pages FROM books WHERE id=?', (book_id,)).fetchone()
     # book not found
     if book is None:
         return RedirectResponse('/404')
 
     # get page data
-    page = model.execute('SELECT title, author, update_datetime, tags, content FROM pages WHERE url=?', (page_id,)).fetchone()
+    page = model.execute('SELECT title, author, update_datetime, tags, content FROM pages WHERE id=?', (page_id,)).fetchone()
     # page not found
     if page is None:
         return RedirectResponse('/404')
 
     # organize and convert data
     # book
-    book_url = book[0]
+    book_id = book[0]
     book_title = book[1]
     book_pages = book[2].split(',')
     # page

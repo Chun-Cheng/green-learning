@@ -30,7 +30,7 @@ def create_table():
     view_count: unsigned integer
     '''
     try:
-        execute('CREATE TABLE books(url PRIMARY KEY, title, author, update_datetime, tags, description, pages, view_count)')
+        execute('CREATE TABLE books(id PRIMARY KEY, title, author, reference, update_datetime, tags, description, pages, view_count)')
     except sqlite3.OperationalError:
         print(f'table "books" has exist')
 
@@ -47,7 +47,7 @@ def create_table():
     view_count: unsigned integer
     '''
     try:
-        execute('CREATE TABLE pages(url PRIMARY KEY, title, author, update_datetime, tags, content, question, book_id, view_count)')
+        execute('CREATE TABLE pages(id PRIMARY KEY, title, author, reference, update_datetime, tags, content, question, book_id, view_count)')
     except sqlite3.OperationalError:
         print(f'table "pages" has exist')
 
