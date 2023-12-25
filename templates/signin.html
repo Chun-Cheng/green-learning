@@ -23,25 +23,33 @@
                             通行密鑰登入警告訊息
                         </div>
                         <!-- passkey login button -->
-                        <button class="btn btn-primary col-12" id="btn-passkey-signin">通行密鑰登入</button>
+                        <button class="btn btn-primary col-12 mb-1" id="btn-passkey-signin">通行密鑰登入</button>
+                        <span id="passkey_help_text" class="form-text">
+                            生物辨識資料不會離開您的裝置。
+                            <a href="https://support.apple.com/zh-tw/102195" class="link-offset-2 link-underline link-underline-opacity-0 link-underline-opacity-100-hover">了解更多</a>
+                        </span>
                         <hr>
                         <!-- email login alert message -->
                         <div class="alert alert-warning" id="email-alert" role="alert">
                             電子信箱登入警告訊息
                         </div>
                         <!-- email login form -->
-                        <form class="form-inline" id="signin-form" method="post" action="#">
-                            <div class="form-group">
-                                <label for="email">電子信箱</label>
-                                <input type="email" class="form-control" id="email" placeholder="例：user@example.com" autocomplete="email webauthn" required>
+                        <form id="signin-form" method="post" action="#">
+                            <div class="mb-3 row">
+                                <label for="email" class="col-lg-3 col-12 col-form-label">電子信箱</label>
+                                <div class="col-lg-9 col-12">
+                                    <input type="email" class="form-control" id="email" autocomplete="email webauthn" required>
+                                </div>
                             </div>
                             <button type="submit" class="btn btn-outline-secondary col-12" id="submit-btn">電子信箱登入</button>
                         </form>
                         <!-- email login verify form -->
                         <form class="form-inline" id="verify-form" method="post" action="#">
-                            <div class="form-group">
-                                <label for="verify-code">驗證碼</label>
-                                <input type="text" class="form-control" id="verify-code" placeholder="Verify code sent to your email" autocomplete="off" required>
+                            <div class="mb-3 row">
+                                <label for="verify-code" class="col-lg-3 col-12 col-form-label">驗證碼</label>
+                                <div class="col-lg-9 col-12">
+                                    <input type="text" class="form-control" id="verify-code" autocomplete="off" required>
+                                </div>
                             </div>
                             <button type="submit" class="btn btn-primary col-12" id="verify-btn">登入</button>
                         </form>

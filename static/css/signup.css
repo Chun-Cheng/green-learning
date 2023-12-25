@@ -1,14 +1,3 @@
-/* Custom styles */
-.form-group {
-    margin-bottom: 15px;
-}
-
-/* Optional: Adjust label width based on your design */
-label {
-    width: 100%;
-    display: inline-block;
-}
-
 #alert {
     display: none;
 }
