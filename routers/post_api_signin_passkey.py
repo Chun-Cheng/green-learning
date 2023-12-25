@@ -8,14 +8,13 @@ from model import model
 router = APIRouter(prefix='/api', tags=['APIs'])
 templates = Jinja2Templates(directory='templates')
 
-class SigninRequest(BaseModel):
+class PasskeySigninRequest(BaseModel):
     #TODO: Modify this
-    name: str
-    email: str
+    passkey: str
 
 # sign in api
 @router.post('/signin')
-async def sign_in(request: Request, signin_request: SigninRequest):
+async def sign_in(request: Request, signin_request: PasskeySigninRequest):
     # check signup_request's format (regex)
 
     # check whether the account exist
