@@ -1,5 +1,6 @@
 import sqlite3
 from datetime import datetime
+import textwrap
 
 connection = sqlite3.connect("./model/green_learing.db")
 cursor = connection.cursor()
@@ -18,10 +19,11 @@ def create_table():
     print('creating tables...')
     # books
     '''
-    url: kind of book id. syntax: title(only lowercase alphabet, numeric, underscore(_), and hyphen(-) are supported. replace unsupported character with -) - create date (example: the-book-20231214)
+    url: kind of book id. syntax: title(only lowercase alphabet, numeric, underscore(_), and hyphen(-) are supported. replace unsupported character with -) - create time (the last 5 digit in milliseconds)  # create date (example: the-book-20231214)
     title: the name of the book. syntax: Captalized Text
     author
-    tags: split in comma(,)
+    reference
+    tags: split in comma(,), not case-sensitive
     update_datetime: last update datetime
     description: text
     # homepage: the first page of the book. syntax: page id
@@ -36,12 +38,20 @@ def create_table():
 
     # pages
     '''
-    url: kind of page id. syntax: book title - title(only lowercase alphabet, numeric, underscore(_), and hyphen(-) are supported. replace unsupported character with -) - create date (example: the-book-20231214)
+    url: kind of page id. syntax: book title - title(only lowercase alphabet, numeric, underscore(_), and hyphen(-) are supported. replace unsupported character with -) - create time (the last 5 digit in milliseconds)  # create date (example: the-book-20231214)
     title
     author
-    tags: split in comma(,)
+    reference
+    tags: split in comma(,), not case-sensitive
     update_datetime
     content: markdown & html
+        Don't contain the title.
+        Headings starts at h2 (## Heading 2).
+        question block syntax:
+            <div name="question-block" id="{question-id}">
+                ...(question content)...
+            </div>
+        for instance: <div name="question-block" id="question-1">
     question: html
     book_id: book id (if it belongs to book)
     view_count: unsigned integer
@@ -149,14 +159,26 @@ def sample_data():
     try:
         # execute('CREATE TABLE books(url, title, author, last_update, tags, homepage, pages)')
         res = execute('SELECT * FROM books').fetchall()
+        # print('books', res)
         if len(res) == 0:
             books = [
-                # url       title     author      update_datetime  tags                description pages                     view_count
-                ('book-1', 'Book 1', 'anonymous', datetime.now(), 'First,Celebration', '', 'book-1-2021214-page-1-20231214', 0)
+                (
+                    'book-1-00000',  # url
+                    'Book 1',  # title
+                    'author',  # author
+                    'reference',  # reference
+                    datetime.now(),  # update_datetime
+                    'first,celebration',  # tags
+                    'This is the first book of the app.',  # description
+                    'book-1-00000-page-1-00000',  # pages
+                    0  # view_count
+                )
             ]
-            executemany('INSERT INTO books VALUES(?, ?, ?, ?, ?, ?, ?, ?)', books)  # write something into the database
-            res = execute('SELECT * FROM books').fetchall()
-            print(f'table books:\n{res}')
+            executemany('INSERT INTO books VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)', books)  # write something into the database
+            # res = execute('SELECT * FROM books').fetchall()
+            # print(f'table books:\n{res}')
+        else:
+            print('The books table is not empty. Sample data generation is canceled.')
     except sqlite3.OperationalError:
         # res = execute('SELECT * FROM books').fetchall()
         # print(f'table "books" has exist, data:\n{res}')
@@ -166,14 +188,76 @@ def sample_data():
     try:
         # execute('CREATE TABLE pages(url, title, author, last_update, tags, content)')
         res = execute('SELECT * FROM pages').fetchall()
-        if res == 0:
+        # print('pages', res)
+        if len(res) == 0:
             pages = [
-                # url                               title     author      update_datetime  tags                 content                         question book_id view_count
-                ('book-1-2021214-page-1-20231214', 'Page 1', 'anonymous', datetime.now(), 'First,Celebration', 'This is the 1 page of Book 1.', '', 'book-1', 0)
+                (
+                    'book-1-00000-page-1-00000',  # url
+                    'Page 1',  # title
+                    'author',  # author
+                    'reference',  # reference
+                    datetime.now(),  # update_datetime
+                    'first,celebration',  # tags
+                    textwrap.dedent('''\
+                    Welcome and Congratulations!
+                    ## Milestone
+                    If you see this article in the correct place and format, then you are success!
+                    Below are format tests:
+
+                    # Heading 1
+                    ## Heading 2
+                    ### Heading 3
+                    #### Heading 4
+                    ##### Heading 5
+                    ###### Heading 6
+                    text  
+                    **bold**  
+                    _italic_  
+                    __underline__  
+                    ==highlight==  
+                    ~~delete~~  
+                    * list 1  
+                    - list 2  
+                    inline `code`  
+                    ```py
+                    # code blocks
+                    print('Hello world!')
+                    ```  
+                    sep  
+                    ---
+                    /sep  
+                    > quote  
+                    text  
+                    >>> quotes  
+                    yeah, still quotes(?)  
+
+                    Below are **question test**  
+                    <div name="question-block" id="question-1">
+                        question block is here!
+                    </div>
+                    '''),  # content
+                    'question-1',  # questions
+                    'book-1-00000',  # book_id
+                    0  # view_count
+                ),
+                (
+                    'single-page-00000',  # url
+                    'Single Page',  # title
+                    'anonymous',  # author
+                    'no reference',  # reference
+                    datetime.now(),  # update_datetime
+                    'second,single',  # tags
+                    '''This is a single page, not in any book.''',  # content
+                    '',  # questions
+                    '',  # book_id
+                    0  # view_count
+                )
             ]
-            executemany('INSERT INTO pages VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)', pages)  # write something into the database
-            res = execute('SELECT * FROM pages').fetchall()
-            print(f'table pages:\n{res}')
+            executemany('INSERT INTO pages VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', pages)  # write something into the database
+            # res = execute('SELECT * FROM pages').fetchall()
+            # print(f'table pages:\n{res}')
+        else:
+            print('The pages table is not empty. Sample data generation is canceled.')
     except sqlite3.OperationalError:
         # res = execute('SELECT * FROM pages').fetchall()
         # print(f'table "pages" has exist, data:\n{res}')
@@ -183,9 +267,6 @@ def sample_data():
 
     # commit
     commit()
-
-# sample_data()
-# create_table()
 
 
 # do something before close

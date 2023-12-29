@@ -25,7 +25,8 @@ app.include_router(post_api_signin_email.router)  # email signin api
 app.include_router(get_404.router)  # 404 Not Found
 
 
-model.create_table()
+# model.create_table()
+model.sample_data()
 
 '''
 # homepage
