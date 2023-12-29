@@ -82,7 +82,7 @@
                 </tr>
                 {% for topic in topics %}
                     <tr>
-                        <td class="col-0"><a href="/book/{{ loop.index }}" class="">{{ loop.index }}</a></td>
+                        <td class="col-0"><a href="/book/{{ topic.id }}" class="">{{ loop.index }}</a></td>
                         <td class="col-12">{{ topic.title }}</td>
                     </tr>
                 {% endfor %}
