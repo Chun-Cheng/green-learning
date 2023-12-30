@@ -2,7 +2,7 @@ from fastapi import APIRouter, Request
 from fastapi.responses import HTMLResponse, RedirectResponse
 from fastapi.templating import Jinja2Templates
 import re
-import markdown
+# import markdown
 from model import model
 
 router = APIRouter()
@@ -25,7 +25,8 @@ async def page(request: Request, page_id: str):
     page_author = page[1]
     page_last_update = page[2]
     page_tags = page[3].split(',')
-    page_content = markdown.markdown(page[4])  # markdown to html
+    page_content = page[4]  # html
+    # page_content = markdown.markdown(page[4])  # markdown to html
 
     # return
     return templates.TemplateResponse('page.html', {'request': request, 
