@@ -16,7 +16,6 @@ async def homepage(request: Request):
                    'author': r[2],
                    'update_datetime': r[3],
                    'content': r[4]}, articles)
-    # TODO: articles are not displayed
     topics = model.execute('SELECT id, title, description, pages FROM books').fetchall()
     topics = map(lambda r: {'id': r[0],
                             'title': r[1],
