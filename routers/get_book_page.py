@@ -32,6 +32,13 @@ async def book_page(request: Request, book_id: str, page_id: str):
     book_id = book[0]
     book_title = book[1]
     book_pages = book[2].split(',')
+    page_index = book_pages.index(page_id)
+    previous_page_id = ''
+    next_page_id = ''
+    if page_index != 0:
+        previous_page_id = book_pages[page_index - 1]
+    if page_index < len(book_pages) - 1:
+        next_page_id = book_pages[page_index + 1]
     # page
     page_title = page[0]
     page_author = page[1]
@@ -42,9 +49,12 @@ async def book_page(request: Request, book_id: str, page_id: str):
 
     # return
     return templates.TemplateResponse('book_page.html', {'request': request, 
+                                                         'book_id': book_id,
                                                          'book_title': book_title, 
                                                          'page_title': page_title,
                                                          'page_author': page_author,
                                                          'page_last_update': page_last_update,
                                                          'page_tags': page_tags,
-                                                         'page_content': page_content})
+                                                         'page_content': page_content,
+                                                         'previous_page_id': previous_page_id,
+                                                         'next_page_id': next_page_id})

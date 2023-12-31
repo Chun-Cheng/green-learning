@@ -25,15 +25,16 @@
     </nav>
     <div class="container mt-5">
         <h1>{{ page_title }}</h1>
-        {{ page_author }} / <!-- datetime -->{{ page_last_update }}<br>
+        {{ page_author }} / <!-- datetime --><time datetime="{{ page_last_update }}" id="update_datetime"><!-- time ago -->{{ page_last_update }}</time><br>
         {{ page_content|safe }}
         <hr>
-        Tags<br>
+        關鍵字<br>
         {% for tag in page_tags %}
             {{ tag }} 
         {% endfor %}
         <!-- recommend articles below -->
     </div>
+    <script src="/static/js/content_process.js"></script>
     <script src="/static/js/page.js"></script>
 </body>
 </html>

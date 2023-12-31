@@ -15,7 +15,7 @@
                 <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5"/>
             </svg>
         </button>
-        <a class="navbar-brand mx-auto" href="#">{{ book_title }}</a><!-- {{ page_title }} -->
+        <a class="navbar-brand mx-auto" href="/book/{{ book_id }}">{{ book_title }}</a><!-- {{ page_title }} -->
         <a href="/signin" class="text-body me-4">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-circle nav-icon" viewBox="0 0 16 16">
                 <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0"/>
@@ -34,18 +34,28 @@
                 </div>
             </div>
         </div>
-        <div class="container mt-5 col-6">
+        <div class="container mt-5 col-6" id="content">
             <h1>{{ page_title }}</h1>
-            {{ page_author }} / <!-- datetime -->{{ page_last_update }}<br>
+            {{ page_author }} / <!-- datetime --><time datetime="{{ page_last_update }}" id="update_datetime"><!-- time ago -->{{ page_last_update }}</time><br>
+            <div class="mt-3 mb-3"></div>
             {{ page_content|safe }}
             <hr>
-            Tags<br>
+            關鍵字<br>
             {% for tag in page_tags %}
                 {{ tag }} 
-            {% endfor %}
+            {% endfor %}<br>
+
+            {% if previous_page_id|length > 0 %}
+            <a class="btn btn-outline-success mt-3" href="/book/{{ book_id }}/{{ previous_page_id }}" role="button">上一頁</a>
+            {% endif %}
+
+            {% if next_page_id|length > 0 %}
+            <a class="btn btn-outline-success mt-3" href="/book/{{ book_id }}/{{ next_page_id }}" role="button">下一頁</a>
+            {% endif %}
         </div>
     </div>
     
+    <script src="/static/js/content_process.js"></script>
     <script src="/static/js/book_page.js"></script>
 </body>
 </html>
