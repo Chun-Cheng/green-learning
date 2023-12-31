@@ -1,6 +1,8 @@
 import sqlite3
 from datetime import datetime
 import textwrap
+import json
+import os
 
 connection = sqlite3.connect("./model/green_learing.db")
 cursor = connection.cursor()
@@ -129,143 +131,60 @@ def sample_data():
     create_table()
     print('load sample data...')
 
-    # # articles
-    # try:
-    #     execute('CREATE TABLE articles(title, author, datetime, tags, content)')
-    #     articles = [
-    #         ('Article 1', 'anonymous', datetime.now(), 'First, Celebration', "# This Is The First Article  Let's celebrate!")
-    #     ]
-    #     executemany('INSERT INTO articles VALUES(?, ?, ?, ?, ?)', articles)  # write something into the database
-    #     res = execute('SELECT * FROM articles').fetchall()
-    #     print(f'table articles:\n{res}')
-    # except sqlite3.OperationalError:
-    #     res = execute('SELECT * FROM articles').fetchall()
-    #     print(f'table "articles" has exist, data:\n{res}')
-
-    # # topics
-    # try:
-    #     execute('CREATE TABLE topics(title, description, courses)')
-    #     topics = [
-    #         ('Topic 1', 'How to go green', '101, 102, 103')
-    #     ]
-    #     executemany('INSERT INTO topics VALUES(?, ?, ?)', topics)  # write something into the database
-    #     res = execute('SELECT * FROM topics').fetchall()
-    #     print(f'table topics:\n{res}')
-    # except sqlite3.OperationalError:
-    #     res = execute('SELECT * FROM topics').fetchall()
-    #     print(f'table "topics" has exist, data:\n{res}')
+    with open('./model/sample_data.json', encoding='utf-8') as file:
+        sample_list = json.loads(file.read())
 
     # books
     try:
-        # execute('CREATE TABLE books(url, title, author, last_update, tags, homepage, pages)')
         res = execute('SELECT * FROM books').fetchall()
-        # print('books', res)
-        if len(res) == 0:
-            books = [
-                (
-                    'book-1-00000',  # url
-                    'Book 1',  # title
-                    'author',  # author
-                    'reference',  # reference
-                    datetime.now(),  # update_datetime
-                    'first,celebration',  # tags
-                    'This is the first book of the app.',  # description
-                    'book-1-00000-page-1-00000',  # pages
-                    0  # view_count
-                )
-            ]
+        if len(res) == 0:            
+            books = []
+            for book in sample_list['books']:
+                books.append((
+                    book['url'],
+                    book['title'],
+                    book['author'],
+                    book['reference'],
+                    book['update_datetime'],
+                    book['tags'],
+                    book['description'],
+                    book['pages'],
+                    book['view_count']
+                ))
             executemany('INSERT INTO books VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)', books)  # write something into the database
-            # res = execute('SELECT * FROM books').fetchall()
-            # print(f'table books:\n{res}')
         else:
             print('The books table is not empty. Sample data generation is canceled.')
     except sqlite3.OperationalError:
-        # res = execute('SELECT * FROM books').fetchall()
-        # print(f'table "books" has exist, data:\n{res}')
         print('Error occurred when inserting data into book table')
 
     # pages
     try:
-        # execute('CREATE TABLE pages(url, title, author, last_update, tags, content)')
         res = execute('SELECT * FROM pages').fetchall()
-        # print('pages', res)
         if len(res) == 0:
-            pages = [
-                (
-                    'book-1-00000-page-1-00000',  # url
-                    'Page 1',  # title
-                    'author',  # author
-                    'reference',  # reference
-                    datetime.now(),  # update_datetime
-                    'first,celebration',  # tags
-                    textwrap.dedent('''\
-                    Welcome and Congratulations!
-                    ## Milestone
-                    If you see this article in the correct place and format, then you are success!
-                    Below are format tests:
-
-                    # Heading 1
-                    ## Heading 2
-                    ### Heading 3
-                    #### Heading 4
-                    ##### Heading 5
-                    ###### Heading 6
-                    text  
-                    **bold**  
-                    _italic_  
-                    __underline__  
-                    ==highlight==  
-                    ~~delete~~  
-                    * list 1  
-                    - list 2  
-                    inline `code`  
-                    ```py
-                    # code blocks
-                    print('Hello world!')
-                    ```  
-                    sep  
-                    ---
-                    /sep  
-                    > quote  
-                    text  
-                    >>> quotes  
-                    yeah, still quotes(?)  
-
-                    Below are **question test**  
-                    <div name="question-block" id="question-1">
-                        question block is here!
-                    </div>
-                    '''),  # content
-                    'question-1',  # questions
-                    'book-1-00000',  # book_id
-                    0  # view_count
-                ),
-                (
-                    'single-page-00000',  # url
-                    'Single Page',  # title
-                    'anonymous',  # author
-                    'no reference',  # reference
-                    datetime.now(),  # update_datetime
-                    'second,single',  # tags
-                    '''This is a single page, not in any book.''',  # content
-                    '',  # questions
-                    '',  # book_id
-                    0  # view_count
-                )
-            ]
+            pages = []
+            for page in sample_list['pages']:
+                with open(page['content_path'], encoding='utf-8') as file:
+                    content = file.read()
+                pages.append((
+                    page['url'],
+                    page['title'],
+                    page['author'],
+                    page['reference'],
+                    page['update_datetime'],
+                    page['tags'],
+                    content,
+                    page['questions'],
+                    page['book_id'],
+                    page['view_count']
+                ))
             executemany('INSERT INTO pages VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', pages)  # write something into the database
-            # res = execute('SELECT * FROM pages').fetchall()
-            # print(f'table pages:\n{res}')
         else:
             print('The pages table is not empty. Sample data generation is canceled.')
     except sqlite3.OperationalError:
-        # res = execute('SELECT * FROM pages').fetchall()
-        # print(f'table "pages" has exist, data:\n{res}')
         print('Error occurred when inserting data into pages table')
 
     # other tables
 
-    # commit
     commit()
 
 
