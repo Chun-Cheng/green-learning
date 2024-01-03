@@ -69,6 +69,67 @@ window.addEventListener('load', (event) => {
     }, 5000);
 });
 
+function record(block_name, answer) {
+    let activity_history_title = window.localStorage.getItem('activity_history_title');
+    let activity_history_block_title = window.localStorage.getItem('activity_history_block_title');
+    let activity_history_answer = window.localStorage.getItem('activity_history_answer');
+    let activity_history_update = window.localStorage.getItem('activity_history_update');
+
+    let now = new Date();
+    if(activity_history_title === null) {
+        // create a record
+        let new_activity_history_title = '台灣的未來該「核」去何從？';
+        let new_activity_history_block_title = block_name;
+        let new_activity_history_answer = answer;
+        let new_activity_history_update = Date.now();
+        window.localStorage.setItem('activity_history_title', new_activity_history_title);
+        window.localStorage.setItem('activity_history_block_title', new_activity_history_block_title);
+        window.localStorage.setItem('activity_history_answer', new_activity_history_answer);
+        window.localStorage.setItem('activity_history_update', new_activity_history_update);
+    } else {
+        // update the record
+        let activity_history_title_list = activity_history_title.split(',');
+        let activity_history_block_title_list = activity_history_block_title.split(',');
+        let activity_history_answer_list = activity_history_answer.split(',');
+        let activity_history_update_list = activity_history_update.split(',');
+
+        // find
+        let found = false;
+        for(let i = 0; i < activity_history_title_list.length; i++) {
+            if(activity_history_title_list[i] === '台灣的未來該「核」去何從？' && activity_history_block_title_list[i] === block_name) {
+                activity_history_update_list[i] = Date.now();//now_iso();
+                found = true;
+                break;
+            }
+        }
+
+        let new_activity_history_title = '';
+        let new_activity_history_block_title = '';
+        let new_activity_history_answer = '';
+        let new_activity_history_update = '';
+
+        if(!found) {
+            // create a record
+            activity_history_title_list.push('台灣的未來該「核」去何從？');
+            activity_history_block_title_list.push(block_name);
+            activity_history_answer_list.push(answer);
+            activity_history_update_list.push(Date.now());
+        }
+
+        // update
+        new_activity_history_title = activity_history_title_list.join(',');
+        new_activity_history_block_title = activity_history_block_title_list.join(',');
+        new_activity_history_answer = activity_history_answer_list.join(',');
+        new_activity_history_update = activity_history_update_list.join(',');
+
+        window.localStorage.setItem('activity_history_title', new_activity_history_title);
+        window.localStorage.setItem('activity_history_block_title', new_activity_history_block_title);
+        window.localStorage.setItem('activity_history_answer', new_activity_history_answer);
+        window.localStorage.setItem('activity_history_update', new_activity_history_update);
+        console.log('activity history recorded.');
+    }
+}
+
 function now_iso() {
     let now = new Date();
     let year = now.getFullYear();

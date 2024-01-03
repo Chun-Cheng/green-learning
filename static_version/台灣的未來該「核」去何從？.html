@@ -62,7 +62,7 @@
                 cursor: pointer;
             }
         </style>
-        <div name="question-block" id="question-1">
+        <div name="question-block" id="模擬公投">
             模擬公投：您是否同意核四啟封商轉發電？<span id="answer"></span>
             <div class="progress mt-2" role="progressbar" aria-label="Success 30px high" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="height: 30px;">
                 <!-- <button id="agree-btn" class="btn btn-outline-secondary col-12" >同意</button> -->
@@ -93,12 +93,14 @@
                         answer_display.classList.add('text-success-emphasis');
                         answer_display.innerText = '同意';
                         // agree record
+                        record('模擬公投', '同意');
                         break;
                     case 'disagree':
                         answer_display.classList.remove('text-success-emphasis');
                         answer_display.classList.add('text-danger-emphasis');
                         answer_display.innerText = '不同意';
                         // disagree record
+                        record('模擬公投', '不同意');
                         break;
                 }
             }

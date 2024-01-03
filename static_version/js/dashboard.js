@@ -12,6 +12,7 @@ window.addEventListener('load', (event) => {
     let activity_history_title = window.localStorage.getItem('activity_history_title');
     let activity_history_block_title = window.localStorage.getItem('activity_history_block_title');
     let activity_history_answer = window.localStorage.getItem('activity_history_answer');
+    let activity_history_update = window.localStorage.getItem('activity_history_update');
 
     let read_record_div = document.getElementById('read_record');
     if(read_history_title == null) {
@@ -49,6 +50,7 @@ window.addEventListener('load', (event) => {
         let activity_history_title_list = activity_history_title.split(',');
         let activity_history_block_title_list = activity_history_block_title.split(',');
         let activity_history_answer_list = activity_history_answer.split(',');
+        let activity_history_update_list = activity_history_update.split(',');
         for (let i = 0; i < activity_history_title.split(',').length; i++) {
             let card = document.createElement('div');
             card.classList.add('card', 'col-12', 'col-md-6', 'mt-2');
@@ -56,7 +58,10 @@ window.addEventListener('load', (event) => {
                 `<div class="card-body">
                     <h5 class="card-title"><a href="${activity_history_title_list[i]}.html" class="card-link link-offset-2 link-underline link-underline-opacity-0 link-underline-opacity-100-hover">${activity_history_title_list[i]}</a></h5>
                     <h6 class="card-subtitle mb-2 text-body-secondary">${activity_history_block_title_list[i]}</h6>
-                    <p class="card-text"><span id="answer">${activity_history_answer_list[i]}</span></p>
+                    <p class="card-text">
+                        <span id="answer">${activity_history_answer_list[i]}</span>
+                        <span id="answer">（${time_ago(Date.now() - Number(activity_history_update_list[i]))}）</span>
+                    </p>
                 </div>`
             activity_record_div.appendChild(card);
         }
