@@ -71,6 +71,11 @@ function title_to_url(title) {
     });
 });
 
+let video_elements = Array.from( document.getElementsByClassName('video') );
+video_elements.forEach(element => {
+    element.classList.add('col-12');
+});
+
 
 // activity block
 let activity_block_elements = Array.from( document.getElementsByName('question-block') );
