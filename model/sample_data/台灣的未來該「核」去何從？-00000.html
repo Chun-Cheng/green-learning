@@ -1,4 +1,8 @@
 <p>
+    <img src="https://doqvf81n9htmm.cloudfront.net/data/crop_article/117432/shutterstock_74729548.jpg_1140x855.jpg" class="img-fluid" alt="核電廠散熱塔"><br>
+    <i>圖／<a href="https://esg.businesstoday.com.tw/article/category/209404/post/202108050031">達志</a></i>
+</p>
+<p>
     台灣是一個能源匱乏的島嶼，長期依賴進口石油、煤炭、天然氣等化石燃料，來滿足日益增加的電力需求。然而，這些燃料不僅成本高昂，也對環境造成嚴重的污染和溫室氣體排放，加劇了全球暖化和氣候變遷的危機。因此，台灣必須尋求更清潔、更可持續的能源來源，以確保經濟發展和民生福祉。
 </p>
 
@@ -16,11 +20,65 @@
 <p>
     核廢料處置是另一個困擾台灣的難題，目前台灣的核廢料分為低階和高階兩種，低階核廢料主要是核電廠運轉過程中產生的輻射污染物，高階核廢料則是用過的核燃料棒。低階核廢料目前暫存於蘭嶼的貯存場，但因為容量已滿，而且當地居民反對，政府一直無法找到新的場址。高階核廢料則是存放在各核電廠的乾式或濕式貯存設施，但也面臨空間不足的問題。對於核廢料的最終處置，國際上通常採用深層地質處置的方式，將核廢料埋在穩定的岩層中，以隔絕與人類和環境的接觸。然而，這種方式需要長期的科學研究和社會共識，目前還沒有任何一個國家實際執行。台灣的核能學者建議，台灣可以考慮採用深孔處置（DBD）的技術，利用鑽井技術將核廢料放置在3000到5000公尺的深井中，這樣可以避免地震和海嘯的風險，也可以減少場址選擇的困難。另一種可行的方式是將部分核廢料送往國外進行再處理，回收可再利用的材料，減少廢棄物的數量和危險性。
 </p>
+<iframe class="video" width="895" height="503" src="https://www.youtube.com/embed/iSJgKoON8MI" title="獨立特派員 第599集 (核廢何從-芬蘭永久處置場)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 <h3>核四廠商轉</h3>
 <p>
-    核四廠商轉是近期引發爭議的議題，由於核四廠已經完工，但因為政府的反核政策而一直停擺，造成巨大的資源浪費和維護費用。核能支持者認為，核四廠應該啟用，以提供穩定和低碳的電力，減少對化石燃料的依賴，並降低電價和空污。他們發起了「核四廠應該商轉發電」的公投，將於今年12月18日舉行。反核人士則認為，核四廠存在許多安全隱患，如活斷層、設計缺陷、施工瑕疵等，啟用核四廠將增加核事故的風險，並加劇核廢料的困境。他們主張應該加速發展再生能源，如風力、太陽能等，以實現非核家園的願景。
+    核四廠商轉是近期引發爭議的議題，由於核四廠已經完工，但因為政府的反核政策而一直停擺，造成巨大的資源浪費和維護費用。核能支持者認為，核四廠應該啟用，以提供穩定和低碳的電力，減少對化石燃料的依賴，並降低電價和空污。他們發起了「核四廠應該商轉發電」的公投，將於2021年12月18日舉行。反核人士則認為，核四廠存在許多安全隱患，如活斷層、設計缺陷、施工瑕疵等，啟用核四廠將增加核事故的風險，並加劇核廢料的困境。他們主張應該加速發展再生能源，如風力、太陽能等，以實現非核家園的願景。
 </p>
+<style>
+    #agree-progress-bar:hover, 
+    #disagree-progress-bar:hover {
+        cursor: pointer;
+    }
+</style>
+<div name="question-block" id="question-1">
+    模擬公投：您是否同意核四啟封商轉發電？<span id="answer"></span>
+    <div class="progress mt-2" role="progressbar" aria-label="Success 30px high" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="height: 30px;">
+        <!-- <button id="agree-btn" class="btn btn-outline-secondary col-12" >同意</button> -->
+        <div id="agree-progress-bar" class="progress-bar bg-success" style="width: 100%;">同意</div>
+    </div>
+    <div class="progress mt-2" role="progressbar" aria-label="Danger 30px high" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="height: 30px;">
+        <div id="disagree-progress-bar" class="progress-bar bg-danger" style="width: 100%;">不同意</div>
+    </div>
+</div>
+<script>
+    let agree_button = document.getElementById('agree-btn');
+    let agree_progressbar = document.getElementById('agree-progress-bar');
+    let disagree_button = document.getElementById('disagree-btn');
+    let disagree_progressbar = document.getElementById('disagree-progress-bar');
+    let answer_display = document.getElementById('answer');
+
+    window.addEventListener("load", (event) => {
+    });
+
+    function vote(option) {
+        agree_progressbar.style.width = '47.16%';
+        agree_progressbar.innerText = '同意 47.16%';
+        disagree_progressbar.style.width = '52.84%';
+        disagree_progressbar.innerText = '不同意 52.84%';
+        switch(option) {
+            case 'agree':
+                answer_display.classList.remove('text-danger-emphasis');
+                answer_display.classList.add('text-success-emphasis');
+                answer_display.innerText = '同意';
+                // agree record
+                break;
+            case 'disagree':
+                answer_display.classList.remove('text-success-emphasis');
+                answer_display.classList.add('text-danger-emphasis');
+                answer_display.innerText = '不同意';
+                // disagree record
+                break;
+        }
+    }
+    agree_progressbar.addEventListener("click", (event) => {
+        vote('agree');
+    });
+    disagree_progressbar.addEventListener("click", (event) => {
+        vote('disagree');
+    });
+</script>
 
 <h2>結論</h2>
 <p>
