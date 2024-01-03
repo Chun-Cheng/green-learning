@@ -183,6 +183,28 @@ def sample_data():
     except sqlite3.OperationalError:
         print('Error occurred when inserting data into pages table')
 
+    # users
+    try:
+        res = execute('SELECT * FROM users').fetchall()
+        if len(res) == 0:
+            users = [(
+                'user',  # username
+                '使用者',  # name
+                'user@email.com',  # email
+                '',  # passkey
+                '',  # opt-key
+                '',  # sessions
+                '',  # interests
+                '',  # weights
+                '',  # reading_history
+                '',  # question_history
+            )]
+            executemany('INSERT INTO users VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', users)  # write something into the database
+        else:
+            print('The users table is not empty. Sample data generation is canceled.')
+    except sqlite3.OperationalError:
+        print('Error occurred when inserting data into users table')
+    
     # other tables
 
     commit()

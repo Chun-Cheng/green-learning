@@ -27,39 +27,33 @@
     <main>
         <section class="container mt-5 mb-5">
             <h3 class="h3">閱讀紀錄</h3>
-            <table class="table table-strip table-hover">
-                <!-- <thead> -->
-                    <!-- <tr> -->
-                        <!-- <th class="col-9 col-sm-10">標題</th> -->
-                        <!-- <th class="col-3 col-sm-2">更新日期</th> -->
-                    <!-- </tr> -->
-                <!-- </thead> -->
-                <tbody>
-                    {% for record in read_records %}
-                    <tr>
-                        <td class="col-12">
-                            <a href="/page/{{ record.id }}" class="link-offset-2 link-underline link-underline-opacity-0 link-underline-opacity-100-hover">{{ record.title }}</a>
-                        </td>
-                        <!-- <td class="col-3 col-sm-2">{{ article.update_datetime }}</td> -->
-                    </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
+            {% for record in read_records %}
+            <div class="card col-12 col-md-6 mt-2 mt-2">
+                <div class="card-body">
+                    <h5 class="card-title"><a href="{{ record.page_full_url }}" class="card-link link-offset-3 link-underline-secondary link-underline-opacity-0 link-underline-opacity-100-hover">{{ record.page_title }}</a></h5>
+                    <p class="card-text"><span id="duration">{{ record.duration }}秒鐘</span>（<span id="update_datetime">{{ record.update_datetime }}</span>）</p>
+                    <!-- <a href="{{ record.page_full_url }}" class="card-link link-offset-2 link-underline-secondary link-underline-opacity-0 link-underline-opacity-100-hover">繼續閱讀</a> -->
+                </div>
+            </div>
+            {% endfor %}
         </section>
 
         <!-- topic list -->
         <section class="container mt-5 mb-5">
             <h3 class="h3">活動紀錄</h3>
-            <table class="table table-strip table-hover">
-                <!-- <tr>
-                    <th class="col-12">主題</th>
-                </tr> -->
-                {% for record in activity_records %}
-                    <tr>
-                        <td class="col-12"><a href="/book/{{ record.id }}" class="link-offset-2 link-underline link-underline-opacity-0 link-underline-opacity-100-hover">{{ record.title }}</a></td>
-                    </tr>
-                {% endfor %}
-            </table>
+            {% for record in activity_records %}
+            <div class="card col-12 col-md-6 mt-2">
+                <div class="card-body">
+                    <h5 class="card-title"><a href="{{ record.page_full_url }}" class="card-link link-offset-3 link-underline-secondary link-underline-opacity-0 link-underline-opacity-100-hover">{{ record.page_title }}</a></h5>
+                    <h6 class="card-subtitle mb-2 text-body-secondary">{{ record.question_title }}</h6>
+                    {% if record.open == Flase %}
+                    <p class="card-text"><span id="correct">{{ record.correct }}</span>，<span id="score">{{ record.score }}/{{ record.full_score }}</span></p>
+                    {% else %}
+                    <p class="card-text"><span id="answer">回答：{{ record.answer }}</span></p>
+                    {% endif %}
+                </div>
+            </div>
+            {% endfor %}
         </section>
     </main>
     <footer>
