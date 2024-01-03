@@ -1,0 +1,16 @@
+footer {
+    position: fixed;
+    bottom: 0;
+    /* background-color: #337b33; */
+    height: 40px;
+    width: 100%;
+}
+
+footer p {
+    position: relative;
+    text-align: right;
+    right: 15px;
+    bottom: 0;
+    line-height: 40px;
+    color: whitesmoke;
+}
