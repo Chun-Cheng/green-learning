@@ -26,7 +26,7 @@ function time_ago(timespan) {
         return `${minutes}分鐘前`;
     } else if (timespan > 10 * 1000) {
         // second
-        let seconds = Math.floor(timespan / (10 * 1000));
+        let seconds = Math.floor(timespan / (1000));
         return `${seconds}秒前`;
     } else {
         // just now
