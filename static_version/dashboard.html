@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>紀錄</title>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="./css/dashboard.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<body>
+    <nav class="navbar sticky-top bg-body-tertiary">
+        <a class="navbar-brand mx-auto" href="homepage.html">紀錄</a>
+    </nav>
+    <main>
+        <section class="container mt-5 mb-5" id="read_record">
+            <h3 class="h3">閱讀紀錄</h3>
+            <!-- <div class="card col-12 col-md-6 mt-2 mt-2">
+                <div class="card-body">
+                    <h5 class="card-title"><a href="{{ record.page_full_url }}" class="card-link link-offset-3 link-underline-secondary link-underline-opacity-0 link-underline-opacity-100-hover">{{ record.page_title }}</a></h5>
+                    <p class="card-text"><span id="duration">{{ record.duration }}秒鐘</span>（<span id="update_datetime">{{ record.update_datetime }}</span>）</p>
+                </div>
+            </div> -->
+        </section>
+
+        <!-- topic list -->
+        <section class="container mt-5 mb-5" id="activity_record">
+            <h3 class="h3">活動紀錄</h3>
+            <!-- <div class="card col-12 col-md-6 mt-2">
+                <div class="card-body">
+                    <h5 class="card-title"><a href="{{ record.page_full_url }}" class="card-link link-offset-3 link-underline-secondary link-underline-opacity-0 link-underline-opacity-100-hover">{{ record.page_title }}</a></h5>
+                    <h6 class="card-subtitle mb-2 text-body-secondary">{{ record.question_title }}</h6>
+                    <p class="card-text"><span id="answer">{{ record.answer }}</span></p>
+                </div>
+            </div> -->
+        </section>
+    </main>
+    <footer>
+        <p>&copy; Cheng's Studio 2023</p>
+    </footer>
+    <script src="./js/dashboard.js"></script>
+</body>
+</html>

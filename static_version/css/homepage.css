@@ -1,0 +1,141 @@
+div {
+    padding: 0;
+    margin: 0;
+}
+
+/* global */
+
+/* a {
+    text-decoration: none;
+} */
+
+/* header */
+
+header {
+    position: fixed;
+    /*background-color: darkseagreen;*/
+    height: 80px;
+    width: 94%;
+    top: 2vw;
+    left: 3%;
+    padding-top: 7px;
+    z-index: 100;
+    border-radius: 20px;
+    background: rgba(188, 188, 188, 0.2);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+h1 {
+    position: relative;
+    left: 5vw;
+    top: 0;
+    line-height: 80px;
+}
+
+/* header ul {
+    position: absolute;
+    right: 5vw;
+    top: 0;
+    line-height: 80px;
+}
+
+header li {
+    display: inline;
+    margin-left: 4vw;
+} */
+
+/* header a {
+    text-decoration: none;
+    color: dimgray;
+} */
+
+/* header a:hover {
+    text-decoration: underline;
+    color: black;
+} */
+
+
+/* main */
+
+/* cover section */
+.cover {
+    height: 100vh;
+    /* background-color: darkolivegreen; */
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../cover.webp');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+/*
+.cover img {
+    object-fit: cover;
+}
+*/
+.cover h2 {
+    display: inline-block;
+    position: relative;
+    vertical-align: bottom;
+    top: 20vw;
+    left: 5vw;
+    font-size: 100px;
+    color: white;
+}
+
+/* article list section */
+/* .articles {
+    width: 100%;
+    padding: 20px;
+    background-color: azure;
+}
+
+.articles h3 {
+    font-size: 36px;
+    margin-bottom: 10px;
+}
+
+.article ul {
+    max-height: 300px;
+    width: 100%;
+    overflow-y: auto;
+    border-style: solid;
+    border-color: black;
+    border-width: 1px;
+}
+
+.article li {
+    list-style: none;
+}
+
+.articles li:nth-child(odd) {
+    background-color: aquamarine;
+} */
+
+/* topic list section */
+/* .topics {
+    width: 100%;
+    padding: 20px;
+    background-color: honeydew;
+} */
+
+/* footer */
+
+footer {
+    background-color: #337b33;
+    height: 40px;
+    width: 100%;
+}
+
+footer p {
+    position: relative;
+    text-align: right;
+    right: 15px;
+    bottom: 0;
+    line-height: 40px;
+    color: whitesmoke;
+}
+
+/* mobile view */
+
+@media screen and (max-width: 768px) {
+    
+}
