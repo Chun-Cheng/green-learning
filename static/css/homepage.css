@@ -5,9 +5,9 @@ div {
 
 /* global */
 
-a {
+/* a {
     text-decoration: none;
-}
+} */
 
 /* header */
 
@@ -18,6 +18,7 @@ header {
     width: 94%;
     top: 2vw;
     left: 3%;
+    padding-top: 7px;
     z-index: 100;
     border-radius: 20px;
     background: rgba(188, 188, 188, 0.2);
@@ -25,14 +26,14 @@ header {
     -webkit-backdrop-filter: blur(10px);
 }
 
-header h1 {
+h1 {
     position: relative;
     left: 5vw;
     top: 0;
     line-height: 80px;
 }
 
-header ul {
+/* header ul {
     position: absolute;
     right: 5vw;
     top: 0;
@@ -42,17 +43,17 @@ header ul {
 header li {
     display: inline;
     margin-left: 4vw;
-}
+} */
 
-header a {
+/* header a {
     text-decoration: none;
     color: dimgray;
-}
+} */
 
-header a:hover {
+/* header a:hover {
     text-decoration: underline;
     color: black;
-}
+} */
 
 
 /* main */
@@ -61,7 +62,7 @@ header a:hover {
 .cover {
     height: 100vh;
     /* background-color: darkolivegreen; */
-    background-image: url('/static/image/cover.webp');
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/static/image/cover.webp');
     background-repeat: no-repeat;
     background-size: cover;
 }
@@ -73,7 +74,7 @@ header a:hover {
 .cover h2 {
     display: inline-block;
     position: relative;
-    vertical-align: middle;
+    vertical-align: bottom;
     top: 20vw;
     left: 5vw;
     font-size: 100px;
@@ -119,7 +120,7 @@ header a:hover {
 /* footer */
 
 footer {
-    background-color: forestgreen;
+    background-color: #337b33;
     height: 40px;
     width: 100%;
 }

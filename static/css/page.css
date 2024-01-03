@@ -2,3 +2,7 @@
     height: 24px;
     width: 24px;
 }
+
+p {
+    line-height: 1.5;
+}

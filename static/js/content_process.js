@@ -76,6 +76,14 @@ function title_to_url(title) {
 let activity_block_elements = Array.from( document.getElementsByName('question-block') );
 activity_block_elements.forEach(element => {
     element.classList.add('card');
+    element.classList.add('mt-3');
+    element.classList.add('mb-3');
+    // add wrapper div
+    let wrapper = document.createElement('div');
+    wrapper.classList.add('card-body');
+    while(element.hasChildNodes())
+        wrapper.appendChild(element.firstChild);
+    element.appendChild(wrapper);
 });
 
 

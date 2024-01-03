@@ -11,15 +11,15 @@
 </head>
 <body>
     <header>
-        <h1>環境學習網</h1>
-        <nav>
-            <ul>
+        <nav class="navbar navbar-expand">
+            <h1>環境學習網</h1>
+            <ul class="navbar-nav ms-auto me-5">
                 <!-- <li><a class="nav-item" href="/about">關於我們</a></li> -->
                 <!-- <li><a class="nav-item" href="/articles">環境讀物</a></li> -->
                 <!-- <li><a class="nav-item" href="/topics">主題課程</a></li> -->
                 <!-- <li><a class="nav-item" href="/websites">相關網站</a></li> -->
-                <li><a class="nav-item" href="/signin">登入</a></li>
-                <li><a class="nav-item" href="/signup">註冊</a></li>
+                <li class="nav-item ms-3 me-3"><a class="nav-link" href="/signin">登入</a></li>
+                <li class="nav-item ms-3 me-3"><a class="nav-link" href="/signup">註冊</a></li>
             </ul>
         </nav>
     </header>
@@ -41,19 +41,19 @@
         <section class="articles container mt-5 mb-5">
             <h3 class="h3">環境讀物</h3>
             <table class="table table-strip table-hover">
-                <thead>
-                    <tr>
-                        <th class="col-9 col-sm-10">標題</th>
-                        <th class="col-3 col-sm-2">更新日期</th>
-                    </tr>
-                </thead>
+                <!-- <thead> -->
+                    <!-- <tr> -->
+                        <!-- <th class="col-9 col-sm-10">標題</th> -->
+                        <!-- <th class="col-3 col-sm-2">更新日期</th> -->
+                    <!-- </tr> -->
+                <!-- </thead> -->
                 <tbody>
                     {% for article in articles %}
                     <tr>
-                        <td class="col-9 col-sm-10">
-                            <a href="/page/{{ article.id }}" class="">{{ article.title }}</a>
+                        <td class="col-12">
+                            <a href="/page/{{ article.id }}" class="link-offset-2 link-underline link-underline-opacity-0 link-underline-opacity-100-hover">{{ article.title }}</a>
                         </td>
-                        <td class="col-3 col-sm-2">{{ article.update_datetime }}</td>
+                        <!-- <td class="col-3 col-sm-2">{{ article.update_datetime }}</td> -->
                     </tr>
                     {% endfor %}
                 </tbody>
@@ -65,14 +65,12 @@
         <section class="topics container mt-5 mb-5">
             <h3 class="h3">主題課程</h3>
             <table class="table table-strip table-hover">
-                <tr>
-                    <th class="col-0"></th>
+                <!-- <tr>
                     <th class="col-12">主題</th>
-                </tr>
+                </tr> -->
                 {% for topic in topics %}
                     <tr>
-                        <td class="col-0"><a href="/book/{{ topic.id }}" class="">{{ loop.index }}</a></td>
-                        <td class="col-12">{{ topic.title }}</td>
+                        <td class="col-12"><a href="/book/{{ topic.id }}" class="link-offset-2 link-underline link-underline-opacity-0 link-underline-opacity-100-hover">{{ topic.title }}</a></td>
                     </tr>
                 {% endfor %}
             </table>
@@ -86,5 +84,6 @@
         <p>&copy; Cheng's Studio 2023</p>
     </footer>
 
+    <script src="/static/js/root.js"></script>
 </body>
 </html>
