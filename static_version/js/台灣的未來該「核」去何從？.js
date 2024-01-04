@@ -97,6 +97,7 @@ function record(block_name, answer) {
         let found = false;
         for(let i = 0; i < activity_history_title_list.length; i++) {
             if(activity_history_title_list[i] === '台灣的未來該「核」去何從？' && activity_history_block_title_list[i] === block_name) {
+                activity_history_answer_list[i] = answer;
                 activity_history_update_list[i] = Date.now();//now_iso();
                 found = true;
                 break;
