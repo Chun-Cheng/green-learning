@@ -20,17 +20,33 @@ async def sign_up(request: Request, signup_request: SignupRequest):
     if content_type != 'application/json':
         raise HTTPException(status.HTTP_422_UNPROCESSABLE_ENTITY)
 
+    name = signup_request.name
+    email = signup_request.email
+
     # check signup_request's format (regex)
 
     # check whether the email has been registered
-    search_result = model.execute('SELECT username FROM users WHERE email=?', (signup_request.email,)).fetchone()
-    if search_result != None:
+    search_result = model.execute('SELECT username FROM users WHERE email=?', (email,)).fetchone()
+    if search_result is not None:
         raise HTTPException(status_code=status.HTTP_409_CONFLICT)
         # To add the additional status code in /docs or /redoc, read the article:
         # https://fastapi.tiangolo.com/advanced/additional-responses/
 
     # signup (update the database)
+    new_user = (
+        name, # username  # TODO: add postfix number
+        name, # name
+        email, # email
+        '', # passkey
+        '', # otp_key
+        '', # sessions
+        '', # interests
+        '', # weights
+        '', # reading_history
+        '', # question_history
+    )
+    model.execute('INSERT INTO users VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', new_user)
 
-    response_content = {}
+    response_content = { 'username': name }
     response_content = jsonable_encoder(response_content)
     return JSONResponse(response_content, status_code=status.HTTP_201_CREATED)

@@ -8,7 +8,4 @@ templates = Jinja2Templates(directory='templates')
 # sign up page
 @router.get('/signup', response_class=HTMLResponse)
 async def sign_up_page(request: Request):
-    # has signed in
-    return RedirectResponse('/dashboard')
-    # not signed in
     return templates.TemplateResponse('signup.html', {'request': request})
