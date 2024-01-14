@@ -5,7 +5,7 @@ from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 from model import model
 from routers import get_root, get_book, get_book_page, get_page, get_404, get_signup, get_signin, get_dashboard
-from routers import post_api_signup, post_api_signin_passkey, post_api_signin_email, get_api_add_read_time
+from routers import post_api_signup, post_api_signin_passkey, post_api_signin_email, get_api_add_read_time, get_api_check_session
 
 app = FastAPI()
 app.mount('/static', StaticFiles(directory='static'), name='static')
@@ -23,6 +23,7 @@ app.include_router(post_api_signup.router)  # signup api
 app.include_router(post_api_signin_passkey.router)  # passkey signin api
 app.include_router(post_api_signin_email.router)  # email signin api
 app.include_router(get_api_add_read_time.router)  # reading time increase api
+app.include_router(get_api_check_session.router)  # validate the session
 
 app.include_router(get_404.router)  # 404 Not Found
 
