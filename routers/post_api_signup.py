@@ -46,7 +46,7 @@ async def sign_up(request: Request, signup_request: SignupRequest):
         '', # question_history
     )
     model.execute('INSERT INTO users VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', new_user)
-
+    model.commit()
     response_content = { 'username': name }
     response_content = jsonable_encoder(response_content)
     return JSONResponse(response_content, status_code=status.HTTP_201_CREATED)

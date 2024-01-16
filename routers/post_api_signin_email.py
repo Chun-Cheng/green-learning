@@ -43,7 +43,7 @@ async def sign_in(request: Request, signin_request: EmailSigninRequest):#email: 
         # update users
         original_sessions = model.execute('SELECT sessions from users WHERE username = ? ', (username,))
         model.execute('UPDATE users SET sessions = ?', (f'{original_sessions},{session_id}',))
-    
+    model.commit()
     response_content = {'session_id': session_id}
     response_content = jsonable_encoder(response_content)
     return JSONResponse(response_content)

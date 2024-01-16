@@ -26,7 +26,7 @@ async def sign_out(session_id: str):
             new_session_str += f'{session},'
         new_session_str = new_session_str[:-1]
         model.execute('UPDATE users SET sessions = ?', (new_session_str,))
-
+    model.commit()
     response_content = { 'message': 'success!' }
     response_content = jsonable_encoder(response_content)
     return JSONResponse(response_content)
