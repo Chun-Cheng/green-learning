@@ -14,7 +14,7 @@ templates = Jinja2Templates(directory='templates')
 #     offset: int = 0
 
 # get read records api
-@router.get('/read_records', status_code=status.HTTP_201_CREATED)
+@router.get('/read_records')
 async def get_read_records(session_id: str, limit: int = 10, offset: int = 0):
     # session_id = get_record_request.session_id
     # limit = get_record_request.limit
