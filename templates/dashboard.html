@@ -16,7 +16,7 @@
                 <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8"/>
             </svg>
         </a> -->
-        <a class="navbar-brand mx-auto" href="#">紀錄</a>
+        <a class="navbar-brand mx-auto" href="/"><span id="user_name"></span>的紀錄</a>
         <!-- <a href="/signin" class="text-body me-4">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-circle nav-icon" viewBox="0 0 16 16">
                 <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0"/>
@@ -27,21 +27,22 @@
     <main>
         <section class="container mt-5 mb-5">
             <h3 class="h3">閱讀紀錄</h3>
-            {% for record in read_records %}
+            <div id="read_record_block"></div>
+            <!-- {% for record in read_records %}
             <div class="card col-12 col-md-6 mt-2 mt-2">
                 <div class="card-body">
                     <h5 class="card-title"><a href="{{ record.page_full_url }}" class="card-link link-offset-3 link-underline-secondary link-underline-opacity-0 link-underline-opacity-100-hover">{{ record.page_title }}</a></h5>
                     <p class="card-text"><span id="duration">{{ record.duration }}秒鐘</span>（<span id="update_datetime">{{ record.update_datetime }}</span>）</p>
-                    <!-- <a href="{{ record.page_full_url }}" class="card-link link-offset-2 link-underline-secondary link-underline-opacity-0 link-underline-opacity-100-hover">繼續閱讀</a> -->
                 </div>
             </div>
-            {% endfor %}
+            {% endfor %} -->
         </section>
 
         <!-- topic list -->
         <section class="container mt-5 mb-5">
             <h3 class="h3">活動紀錄</h3>
-            {% for record in activity_records %}
+            <div id="activity_record_block"></div>
+            <!-- {% for record in activity_records %}
             <div class="card col-12 col-md-6 mt-2">
                 <div class="card-body">
                     <h5 class="card-title"><a href="{{ record.page_full_url }}" class="card-link link-offset-3 link-underline-secondary link-underline-opacity-0 link-underline-opacity-100-hover">{{ record.page_title }}</a></h5>
@@ -53,7 +54,7 @@
                     {% endif %}
                 </div>
             </div>
-            {% endfor %}
+            {% endfor %} -->
         </section>
     </main>
     <footer>

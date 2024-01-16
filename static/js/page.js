@@ -18,8 +18,10 @@ window.addEventListener('load', (event) => {
         await fetch(`/api/add_read_time?session_id=${session_id}&page_id=${page_id}&seconds=3&update=${update_datetime}`)  // , {method: 'GET'}
             .then(response => {
                 console.debug(`/api/add_read_time 3: ${response.status}`);
+                if (response.ok) {
+                    console.log('reading time recorded');
+                }
             });
-        console.log('reading time recorded');
     }, 3000);  //
 });
 

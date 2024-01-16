@@ -8,8 +8,4 @@ templates = Jinja2Templates(directory='templates')
 # dashboard page
 @router.get('/dashboard', response_class=HTMLResponse)
 async def dashboard(request: Request):
-    read_records = []
-    activity_records = []
-    return templates.TemplateResponse('dashboard.html', {'request': request,
-                                                         'read_records': read_records,
-                                                         'activity_records': activity_records})
+    return templates.TemplateResponse('dashboard.html', {'request': request})
