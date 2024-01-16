@@ -93,16 +93,15 @@
                         answer_display.classList.add('text-success-emphasis');
                         answer_display.innerText = '同意';
                         // agree record
-                        record('模擬公投', '同意');
                         break;
                     case 'disagree':
                         answer_display.classList.remove('text-success-emphasis');
                         answer_display.classList.add('text-danger-emphasis');
                         answer_display.innerText = '不同意';
                         // disagree record
-                        record('模擬公投', '不同意');
                         break;
                 }
+                add_activity_record('台灣的未來該「核」去何從？-00000-question-1', '模擬核四公投', '台灣的未來該「核」去何從？-00000', 1, -1, -1, -1, answer_display.innerText);
             }
             agree_progressbar.addEventListener("click", (event) => {
                 vote('agree');
@@ -136,6 +135,6 @@
     </div>
     <div class="mb-5"></div>
     <script src="./js/content_process.js"></script>
-    <script src="./js/台灣的未來該「核」去何從？.js"></script>
+    <script src="./js/nuclear.js"></script>
 </body>
 </html>
